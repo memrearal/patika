@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asian Kitchen</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Zilla+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section class="menu">
+        <div class="title">
+          <h2>Asian Kitchen's Menu</h2>
+        </div>
+        <div class="btn-container" id="ButtonContainer"></div>
+        <div class="section-center row" id="menuContainer">
+        </div>
+      </section>
+    </div>
+    <script src="app.js"></script>
+    <script>
+      let buttonNames = []
+    buttonNames.push("All")
+   menu.forEach(item =>  !buttonNames.includes(item.category) ? buttonNames.push(item.category): null)
+   const container = document.getElementById("ButtonContainer");
+    buttonNames.forEach(item => {
+        const button = document.createElement("button");
+        button.className="btn btn-outline-dark btn-item";
+        button.innerText=item;
+        button.id=item
+        button.onclick= () => getMenuList(button.id);
+        container.append(button);
+    });
+    function getMenuList(filter="All"){
+      const filteredMenu = filter === "All" ? menu : menu.filter(item => item.category === filter);
+      const menuContainerTag = document.querySelector("#menuContainer");
+      menuContainerTag.innerHTML=null
+      filteredMenu.forEach(item =>  {
+          const menuContainer = document.createElement("div");
+          menuContainer.className="menu-items col-lg-6 col-sm-12"
+          menuContainerTag.append(menuContainer);
+          const photo = document.createElement("img");
+          photo.className="photo";
+          photo.src=item.img;
+          menuContainer.append(photo);
+          const menuInfo= document.createElement("div");
+          menuInfo.className="menu-info"
+          menuContainer.append(menuInfo);
+          const menuTitle= document.createElement("div");
+          menuTitle.className="menu-title"
+          const title = document.createElement("h4")
+          title.innerHTML=item.title
+          const price = document.createElement("h4")
+          price.className="price";
+          price.innerHTML=item.price;
+          menuTitle.append(title,price);
+          menuInfo.append(menuTitle);
+          const menuText= document.createElement("div");
+          menuText.className="menu-text"
+          menuText.innerText=item.desc
+          menuInfo.append(menuText);
+     });
+    }
+    getMenuList();
+</script>
+  </body>
+</html>
