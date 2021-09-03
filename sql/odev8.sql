@@ -68,7 +68,7 @@ insert into employee (id, name, email, birthday) values (50, 'Egan Jedras', 'eje
 UPDATE employee SET name = 'Emre' WHERE id = 1;
 UPDATE employee SET email = 'test@gmail.com' WHERE name = 'Emre';
 UPDATE employee SET birthday = '01/01/2000' WHERE email = 'test@gmail.com';
-UPDATE employee SET name = 'Emre A' WHERE birthday = '01/01/2000;
+UPDATE employee SET name = 'Emre A' WHERE birthday = '01/01/2000';
 UPDATE employee SET email = 'emre@emre.me' WHERE name = 'Emre A';
 
 /*
