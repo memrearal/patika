@@ -12,6 +12,6 @@ SELECT title FROM film WHERE title LIKE '%n' ORDER BY length OFFSET 5 LIMIT 5;
 
 /*
  Soru 3:
- Film tablosunda bulunan film isimlerinde (title) kaç tanesini T karakteri ile başlar ve aynı zamanda rating 'G' ye eşittir?
+ Customer tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
 */
 SELECT last_name FROM customer WHERE store_id = 1 ORDER BY last_name DESC LIMIT 4;
